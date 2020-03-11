@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: spring-boot-speed-skill-system
+  thymeleaf:
+    enabled: true
+    cache: false
+    mode: HTML # 用非严格的 HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.109:3306/myshop?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: liulong
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  redis:
+    host: 47.98.54.239
+    port: 6379
+    timeout: 10
+    password: 123456
+    poolMaxTotal: 10
+    poolMaxIdle: 10
+    poolMaxWait: 3
+
+
+logging:
+  file: ../logs/spring-boot-speed-skill-system.log
+  level.org.springframework.web: DEBUG
