@@ -1,19 +1,21 @@
 spring:
   application:
     name: spring-boot-speed-skill-system
+
+  profiles:
+    active: dev
+
   thymeleaf:
-    enabled: true
     cache: false
-    mode: HTML # 用非严格的 HTML
+    mode: HTML
     encoding: UTF-8
-    prefix: classpath:/templates/
-    suffix: .html
     servlet:
       content-type: text/html
+
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.0.109:3306/myshop?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/skillspeedsystem?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: liulong
     hikari:
@@ -25,8 +27,9 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+
   redis:
-    host: 47.98.54.239
+    host: localhost
     port: 6379
     timeout: 10
     password: 123456
@@ -34,6 +37,12 @@ spring:
     poolMaxIdle: 10
     poolMaxWait: 3
 
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
 
 logging:
   file: ../logs/spring-boot-speed-skill-system.log

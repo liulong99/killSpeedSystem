@@ -138,7 +138,7 @@ public class RedisService {
     }
 
     /**
-     * String 类型转 T
+     * String 类型转 java对象
      * @param str
      * @param clazz
      * @param <T>
@@ -159,7 +159,7 @@ public class RedisService {
     }
 
     /**
-     * T 类型转 String
+     * java对象 类型转 String
      * @param value
      * @param <T>
      * @return

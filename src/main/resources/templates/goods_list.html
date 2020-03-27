@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <!--jquery-->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/AdminLTE.min.css}">
+    <!--bootstrap-->
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!--jquery-validator-->
+    <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+    <!--layer-->
+    <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+    <!--md5.js-->
+    <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+    <!--common.js-->
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">秒杀商品列表</div>
+    <table class="table" id="goodslist">
+        <tr>
+            <td>商品名称：</td>
+            <td>商品图片</td>
+            <td>商品原价：</td>
+            <td>秒杀价：</td>
+            <td>库存数量：</td>
+            <td>详情</td>
+        </tr>
+        <tr th:each="goods,goodsStat:${goodsList}">
+            <td th:text="${goods.goodsName}"></td>
+            <td><img th:src="@{${goods.goodsImg}}" th:width="100" th:height="100" /></td>
+            <td th:text="${goods.goodsPrice}">元</td>
+            <td th:text="${goods.miaoshaPrice}">元</td>
+            <td th:text="${goods.stockCount}">件</td>
+            <td><a th:href="'/goods/toDetail/'+${goods.id}">详情</a> </td>
+        </tr>
+    </table>
+</div>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</body>
+</html>
