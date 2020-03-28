@@ -1,5 +1,6 @@
-package com.ccgydx.spring.boot.speed.kill.system.domain;
+package com.ccgydx.spring.boot.speed.kill.system.domain.povo;
 
+import com.ccgydx.spring.boot.speed.kill.system.domain.Goods;
 import lombok.Data;
 
 import javax.persistence.Column;

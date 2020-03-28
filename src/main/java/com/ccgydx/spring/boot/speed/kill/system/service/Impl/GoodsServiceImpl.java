@@ -1,6 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.service.Impl;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.GoodsVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.ccgydx.spring.boot.speed.kill.system.mapper.GoodsMapper;

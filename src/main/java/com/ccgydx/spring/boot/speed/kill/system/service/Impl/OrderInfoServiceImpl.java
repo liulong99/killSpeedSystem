@@ -2,7 +2,7 @@ package com.ccgydx.spring.boot.speed.kill.system.service.Impl;
 import java.util.Date;
 
 import com.ccgydx.spring.boot.speed.kill.system.domain.OrderInfo;
-import com.ccgydx.spring.boot.speed.kill.system.domain.GoodsVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaOrder;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
 import org.springframework.stereotype.Service;

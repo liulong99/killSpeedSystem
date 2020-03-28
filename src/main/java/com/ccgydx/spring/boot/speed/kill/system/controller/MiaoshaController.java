@@ -1,6 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.controller;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.GoodsVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaOrder;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
 import com.ccgydx.spring.boot.speed.kill.system.domain.OrderInfo;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.ccgydx.spring.boot.speed.kill.system.domain.OrderInfo;
 
 /**
  * @Description :主要实现秒杀功能

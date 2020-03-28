@@ -1,6 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.controller;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.GoodsVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
 import com.ccgydx.spring.boot.speed.kill.system.service.GoodsService;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaUserService;

@@ -1,34 +1,18 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>秒杀详情</title>
-    <!--jquery-->
-    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
     <!--bootstrap-->
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
-    <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/AdminLTE.min.css}">
-    <!--bootstrap-->
-    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-    <!--jquery-validator-->
-    <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
-    <script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
-    <!--layer-->
-    <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
-    <!--md5.js-->
-    <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
-    <!--common.js-->
-    <script type="text/javascript" th:src="@{/js/common.js}"></script>
 </head>
 <body>
 <div class="panel panel-default">
-    <div class="panel-heading">秒杀订单详情</div>
-    <table class="table" id="goodslist">
+    <div class="panel-heading"><center><h2>秒杀订单详情</h2></center></div>
+    <table class="table">
         <tr>
             <td>商品名称：</td>
             <td colspan="3" th:text="${goodsVo.goodsName}"></td>
@@ -59,6 +43,10 @@
         </tr>
         <tr>
             <td>收货人：</td>
+            <td colspan="2" th:text="${miaoshaUser.nickname}"></td>
+        </tr>
+        <tr>
+            <td>收货人电话：</td>
             <td colspan="2" th:text="${orderInfo.userId}"></td>
         </tr>
         <tr>

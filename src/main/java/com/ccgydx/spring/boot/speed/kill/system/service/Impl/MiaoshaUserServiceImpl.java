@@ -1,8 +1,8 @@
 package com.ccgydx.spring.boot.speed.kill.system.service.Impl;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.LoginVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.LoginVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
-import com.ccgydx.spring.boot.speed.kill.system.domain.RegisterVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.RegisterVo;
 import com.ccgydx.spring.boot.speed.kill.system.exception.GlobalException;
 import com.ccgydx.spring.boot.speed.kill.system.redis.MiaoshaUserKey;
 import com.ccgydx.spring.boot.speed.kill.system.redis.RedisService;

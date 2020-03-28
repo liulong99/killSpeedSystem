@@ -1,6 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.service;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.GoodsVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 
 import java.util.List;
 

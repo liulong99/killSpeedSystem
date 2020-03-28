@@ -1,4 +1,4 @@
-package com.ccgydx.spring.boot.speed.kill.system.domain;
+package com.ccgydx.spring.boot.speed.kill.system.domain.povo;
 
 import com.ccgydx.spring.boot.speed.kill.system.valicator.IsMobile;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,8 +1,8 @@
 package com.ccgydx.spring.boot.speed.kill.system.service;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.LoginVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.LoginVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
-import com.ccgydx.spring.boot.speed.kill.system.domain.RegisterVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.RegisterVo;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;

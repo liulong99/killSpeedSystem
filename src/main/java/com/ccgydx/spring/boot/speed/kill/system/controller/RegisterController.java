@@ -1,7 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.controller;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.LoginVo;
-import com.ccgydx.spring.boot.speed.kill.system.domain.RegisterVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.RegisterVo;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaUserService;
 import com.ccgydx.spring.boot.speed.kill.system.util.CodeMsg;
 import com.ccgydx.spring.boot.speed.kill.system.util.Result;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**

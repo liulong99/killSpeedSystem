@@ -1,6 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.controller;
 
-import com.ccgydx.spring.boot.speed.kill.system.domain.LoginVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.LoginVo;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaUserService;
 import com.ccgydx.spring.boot.speed.kill.system.util.Result;
 import io.swagger.annotations.Api;

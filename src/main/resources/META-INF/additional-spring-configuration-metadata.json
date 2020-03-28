@@ -4,5 +4,10 @@
       "name": "spring.redis.poolMaxTotal",
       "type": "java.lang.String",
       "description": "Description for spring.redis.poolMaxTotal."
-  }
-] }
+    },
+    {
+      "name": "spring.redis.poolMaxTotal",
+      "type": "java.lang.String",
+      "description": "Description for spring.redis.poolMaxTotal."
+    }
+  ] }

@@ -23,7 +23,7 @@ public class RedisConfig implements Serializable {
     @Value("${spring.redis.port}")
     private int port;
 
-    //单位 秒
+
     @Value("${spring.redis.timeout}")
     private int timeout;
 
@@ -36,7 +36,6 @@ public class RedisConfig implements Serializable {
     @Value("${spring.redis.poolMaxIdle}")
     private int poolMaxIdle;
 
-    //单位 秒
     @Value("${spring.redis.poolMaxWait}")
     private int poolMaxWait;
 

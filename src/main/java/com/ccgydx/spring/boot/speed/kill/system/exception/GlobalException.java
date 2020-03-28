@@ -3,7 +3,7 @@ package com.ccgydx.spring.boot.speed.kill.system.exception;
 import com.ccgydx.spring.boot.speed.kill.system.util.CodeMsg;
 
 /**
- * @Description :
+ * @Description :全局异常处理
  * @Author 刘龙
  * @Date 2020/3/17 11:13
  * @Version 1.0

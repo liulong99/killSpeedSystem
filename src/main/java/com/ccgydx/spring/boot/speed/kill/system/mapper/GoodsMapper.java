@@ -1,7 +1,7 @@
 package com.ccgydx.spring.boot.speed.kill.system.mapper;
 
 import com.ccgydx.spring.boot.speed.kill.system.domain.Goods;
-import com.ccgydx.spring.boot.speed.kill.system.domain.GoodsVo;
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
 
