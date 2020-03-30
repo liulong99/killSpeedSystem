@@ -19,9 +19,9 @@ spring:
     username: root
     password: liulong
     hikari:
-      minimum-idle: 5
+      minimum-idle: 500
       idle-timeout: 600000
-      maximum-pool-size: 10
+      maximum-pool-size: 1000
       auto-commit: true
       pool-name: MyHikariCP
       max-lifetime: 1800000
@@ -33,9 +33,9 @@ spring:
     port: 6379
     timeout: 10
     password: 123456
-    poolMaxTotal: 10
-    poolMaxIdle: 10
-    poolMaxWait: 3
+    poolMaxTotal: 1000
+    poolMaxIdle: 1000
+    poolMaxWait: 500
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss

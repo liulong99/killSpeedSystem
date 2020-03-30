@@ -8,11 +8,13 @@ import com.ccgydx.spring.boot.speed.kill.system.service.GoodsService;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaGoodsService;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaOrderService;
 import com.ccgydx.spring.boot.speed.kill.system.util.CodeMsg;
+import com.ccgydx.spring.boot.speed.kill.system.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description :主要实现秒杀功能
@@ -32,6 +34,12 @@ public class MiaoshaController {
 
     @Autowired
     MiaoshaGoodsService miaoshaGoodsService;
+
+    @RequestMapping("/info")
+    @ResponseBody
+    public Result<MiaoshaUser> info(Model model,MiaoshaUser miaoshaUser){
+        return Result.success(miaoshaUser);
+    }
 
     /**
      * 秒杀功能实现

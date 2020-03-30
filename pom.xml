@@ -11,6 +11,7 @@
     <groupId>com.ccgydx</groupId>
     <artifactId>spring-boot-speed-kill-system</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>spring-boot-speed-kill-system</name>
     <description>秒杀系统</description>
 
@@ -40,7 +41,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件 -->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
+
+        <!--依赖外置的tomcat start-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.tomcat</groupId>-->
+<!--            <artifactId>tomcat-servlet-api</artifactId>-->
+<!--            <version>8.0.36</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+        <!--依赖外置的tomcat end-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -154,14 +171,17 @@
             <version>${swagger.version}</version>
         </dependency>
         <!--swagger end-->
-
     </dependencies>
 
     <build>
         <plugins>
+            <!-- 添加spring的插件， 就可以直接通过 mvn spring-boot:run 运行了 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.ccgydx.spring.boot.speed.kill.system.SpringBootSpeedKillSystemApplication</mainClass>
+                </configuration>
             </plugin>
 
             <plugin>

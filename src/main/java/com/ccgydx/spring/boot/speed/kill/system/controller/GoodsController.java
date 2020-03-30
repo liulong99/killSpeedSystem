@@ -37,6 +37,12 @@ public class GoodsController {
      * @param model
      * @param miaoshaUser
      * @return
+     *
+     *
+     * jmeter
+     * 样本 5000*10
+     * 吞吐量 816.9
+     * 异常71.58%
      */
     @ApiOperation(value = "返回商品页面")
     @RequestMapping("/toList")

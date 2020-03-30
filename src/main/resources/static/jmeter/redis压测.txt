@@ -1,0 +1,13 @@
+#模拟100个并发十万个请求
+redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000    
+
+#100字节测试
+redis-benchmark -h 127.0.0.1 -p 6379 -q -d 100
+
+#只测试set,lpush请求，测十万个
+redis-benchmark -t set,lpush -q -n 100000
+
+#只测试某些数值存取的性能
+redis-benchmark -n 100000 -q script load "redis.call('set','foo','bar')"
+ 
+jmeter.bat -n -t C:\Users\liulo\Desktop\聚合报告.jmx -l C:\Users\liulo\Desktop\result.jtl
