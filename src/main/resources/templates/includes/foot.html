@@ -6,18 +6,19 @@
 </head>
 <body th:fragment="foot">
 <!--jquery-->
-<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<!--/*@thymesVar id="HOST_CDN" type=""*/-->
+<script type="text/javascript" th:src="@{{HOST_CDN}/js/jquery.min.js(HOST_CDN=${HOST_CDN})}"></script>
 
 <!--bootstrap-->
-<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{{HOST_CDN}/bootstrap/js/bootstrap.min.js(HOST_CDN=${HOST_CDN})}"></script>
 <!--jquery-validator-->
-<script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
-<script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+<script type="text/javascript" th:src="@{{HOST_CDN}/jquery-validation/jquery.validate.min.js(HOST_CDN=${HOST_CDN})}"></script>
+<script type="text/javascript" th:src="@{{HOST_CDN}/jquery-validation/localization/messages_zh.min.js(HOST_CDN=${HOST_CDN})}"></script>
 <!--layer-->
-<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{{HOST_CDN}/layer/layer.js(HOST_CDN=${HOST_CDN})}"></script>
 <!--md5.js-->
-<script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+<script type="text/javascript" th:src="@{{HOST_CDN}/js/md5.min.js(HOST_CDN=${HOST_CDN})}"></script>
 <!--common.js-->
-<script type="text/javascript" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" th:src="@{{HOST_CDN}/js/common.js(HOST_CDN=${HOST_CDN})}"></script>
 </body>
 </html>

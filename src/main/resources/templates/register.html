@@ -5,7 +5,8 @@
     <th:block th:include="includes/common :: common"></th:block>
     <th:block th:include="includes/head :: head"></th:block>
     <!--register.js-->
-    <script type="text/javascript" th:src="@{/js/register.js}"></script>
+    <!--/*@thymesVar id="HOST_CDN" type=""*/-->
+    <script type="text/javascript" th:src="@{{HOST_CDN}/js/register.js(HOST_CDN=${HOST_CDN})}"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">

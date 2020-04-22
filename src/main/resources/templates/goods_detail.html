@@ -4,9 +4,10 @@
     <title>商品详情</title>
     <th:block th:include="includes/common :: common"></th:block>
     <!--jquery-->
-    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <!--/*@thymesVar id="HOST_CDN" type=""*/-->
+    <script type="text/javascript" th:src="@{{HOST_CDN}/js/jquery.min.js(HOST_CDN=${HOST_CDN})}"></script>
     <!-- goods_detail.js   -->
-    <script type="text/javascript" th:src="@{/js/goods_detail.js}"></script>
+    <script type="text/javascript" th:src="@{{HOST_CDN}/js/goods_detail.js(HOST_CDN=${HOST_CDN})}"></script>
 </head>
 <body>
 <div class="panel panel-default">
@@ -51,4 +52,5 @@
     </table>
 </div>
 <th:block th:include="includes/IE8 :: IE8"></th:block>
+</body>
 </html>

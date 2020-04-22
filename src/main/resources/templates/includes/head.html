@@ -3,7 +3,8 @@
 <head th:fragment="head">
     <meta charset="utf-8">
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/AdminLTE.min.css}">
+    <!--/*@thymesVar id="HOST_CDN" type=""*/-->
+    <link rel="stylesheet" type="text/css" th:href="@{{HOST_CDN}/css/AdminLTE.min.css(HOST_CDN=${HOST_CDN})}">
 </head>
 <body>
 
