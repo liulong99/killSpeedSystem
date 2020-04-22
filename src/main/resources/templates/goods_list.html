@@ -16,6 +16,7 @@
             <td>库存数量：</td>
             <td>详情</td>
         </tr>
+        <!--/*@thymesVar id="goodsList" type=""*/-->
         <tr th:each="goods:${goodsList}">
             <td th:text="${goods.goodsName}"></td>
             <td><img th:src="@{${goods.goodsImg}}" th:width="100" th:height="100" /></td>
