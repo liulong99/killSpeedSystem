@@ -16,14 +16,14 @@
             <td>库存数量：</td>
             <td>详情</td>
         </tr>
-        <!--/*@thymesVar id="goodsList" type=""*/-->
         <tr th:each="goods:${goodsList}">
             <td th:text="${goods.goodsName}"></td>
             <td><img th:src="@{${goods.goodsImg}}" th:width="100" th:height="100" /></td>
             <td th:text="${goods.goodsPrice}">元</td>
             <td th:text="${goods.miaoshaPrice}">元</td>
             <td th:text="${goods.stockCount}">件</td>
-            <td><a th:href="'/goods/toDetail/'+${goods.id}">详情</a> </td>
+            <!--<td><a th:href="'/goods/toDetail/'+${goods.id}">详情</a> </td>-->
+            <td><a th:href="'/html/goods_detail.htm?goodsId='+${goods.id}">详情</a> </td>
         </tr>
     </table>
 </div>

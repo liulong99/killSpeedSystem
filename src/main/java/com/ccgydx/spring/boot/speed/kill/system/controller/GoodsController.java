@@ -1,11 +1,13 @@
 package com.ccgydx.spring.boot.speed.kill.system.controller;
 
+import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsDetailVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
 import com.ccgydx.spring.boot.speed.kill.system.redis.GoodsKey;
 import com.ccgydx.spring.boot.speed.kill.system.redis.RedisService;
 import com.ccgydx.spring.boot.speed.kill.system.service.GoodsService;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaUserService;
+import com.ccgydx.spring.boot.speed.kill.system.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-import tk.mybatis.mapper.util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -140,6 +141,52 @@ public class GoodsController {
             redisService.set(GoodsKey.getGoodsDetail,""+goodsId,html);
         }
         return html;
+    }
+
+    /**
+     * 静态返回商品详情页面
+     * @param model
+     * @param miaoshaUser
+     * @param goodsId
+     * @return
+     */
+    @ApiOperation(value = "商品详情页面")
+    @RequestMapping(value = "/detail/{goodsId}")
+    @ResponseBody
+    public Result<GoodsDetailVo> toDetail2(HttpServletRequest request, HttpServletResponse response,
+                                           Model model, MiaoshaUser miaoshaUser, @PathVariable("goodsId")long goodsId){
+        GoodsVo goodsVo=goodsService.getGoodsVoByGoodsId(goodsId);
+        long startAt = goodsVo.getStartDate().getTime();
+        long endAt = goodsVo.getEndDate().getTime();
+        long now = System.currentTimeMillis();
+        //miaoshaStatus=0表示秒杀未开始，=1表示秒杀进行中，=2表示秒杀已经结束
+        int miaoshaStatus=0;
+        //秒杀还有多久开始 remainSecond=0表示进行中，>0表示还在倒计时，<0表示已经结束
+        int remainSecond=0;
+        //判断秒杀是否进行
+        if(now<startAt){
+            //秒杀未开始，倒计时
+            miaoshaStatus=0;
+            remainSecond=(int)(startAt-now)/1000;
+        }else if(now>endAt){
+            //秒杀结束
+            miaoshaStatus=2;
+            remainSecond=-1;
+        }else{
+            //秒杀进行中
+            miaoshaStatus=1;
+            remainSecond=0;
+        }
+        model.addAttribute("miaoshaStatus",miaoshaStatus);
+        model.addAttribute("remainSecond",remainSecond);
+//        return "goods_detail";
+        GoodsDetailVo goodsDetailVo = new GoodsDetailVo();
+        goodsDetailVo.setMiaoshaStatus(miaoshaStatus);
+        goodsDetailVo.setRemainSecond(remainSecond);
+        goodsDetailVo.setGoodsVo(goodsVo);
+        goodsDetailVo.setMiaoshaUser(miaoshaUser);
+
+        return Result.success(goodsDetailVo);
     }
 
 

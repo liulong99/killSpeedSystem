@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @Description :注册实体类
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * @Version 1.0
  **/
 @Data
-public class RegisterVo {
+public class RegisterVo implements Serializable {
     @NotNull
     @IsMobile
     @ApiModelProperty(value = "用户账号")
