@@ -21,7 +21,6 @@ import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaUserService;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class MiaoshaUserServiceImpl implements MiaoshaUserService{
@@ -40,11 +39,48 @@ public class MiaoshaUserServiceImpl implements MiaoshaUserService{
      * @return
      */
     @Override
-    public List<MiaoshaUser> getById(Long id) {
+    public MiaoshaUser getById(Long id) {
+        //取缓存
+        MiaoshaUser miaoshaUser = redisService.get(MiaoshaUserKey.getById, "" + id, MiaoshaUser.class);
+        if(miaoshaUser!=null){
+            return miaoshaUser;
+        }
+
+        //取数据库
         Example example=new Example(MiaoshaUser.class);
         example.createCriteria().andEqualTo("id",id);
-        List<MiaoshaUser> miaoshaUsers = miaoshaUserMapper.selectByExample(example);
-        return miaoshaUsers;
+        miaoshaUser = miaoshaUserMapper.selectOneByExample(example);
+        if(miaoshaUser!=null){
+            redisService.set(MiaoshaUserKey.getById, "" + id, miaoshaUser);
+        }
+        return miaoshaUser;
+    }
+
+    /**
+     * 修改密码
+     * @param token
+     * @param id
+     * @param formPass
+     * @return
+     */
+    @Override
+    public boolean updatePassword(String token,long id, String formPass) {
+        //取user
+        MiaoshaUser miaoshaUser=getById(id);
+        if(miaoshaUser==null){
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
+        }
+        //更新数据库
+        miaoshaUser.setPassword(Md5Util.formPassToDbPass(formPass,miaoshaUser.getSalt()));
+        Example example=new Example(MiaoshaUser.class);
+        example.createCriteria().andEqualTo("id",miaoshaUser.getId());
+        miaoshaUserMapper.updateByExample(miaoshaUser,example);
+
+        //处理缓存
+        redisService.delete(MiaoshaUserKey.getById,""+id);
+        redisService.set(MiaoshaUserKey.token,token,miaoshaUser);
+
+        return true;
     }
 
     /**
@@ -60,19 +96,19 @@ public class MiaoshaUserServiceImpl implements MiaoshaUserService{
         String mobile = loginVo.getMobile();
         String formPass = loginVo.getPassword();
         //判断手机号是否存在
-        List<MiaoshaUser> miaoshaUsers = getById(Long.parseLong(mobile));
-        if(miaoshaUsers.size()==0){
+        MiaoshaUser miaoshaUser = getById(Long.parseLong(mobile));
+        if(miaoshaUser==null){
             throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
-        String password=miaoshaUsers.get(0).getPassword();
-        String salt=miaoshaUsers.get(0).getSalt();
+        String password=miaoshaUser.getPassword();
+        String salt=miaoshaUser.getSalt();
         String calcPass= Md5Util.formPassToDbPass(formPass,salt);
         if(!password.equals(calcPass)){
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
         String token=UUIDUtils.uuid();
         //将cookie放入到Response中
-        addCookie(response,miaoshaUsers.get(0),token);
+        addCookie(response,miaoshaUser,token);
         return true;
     }
 

@@ -13,7 +13,7 @@ public interface MiaoshaUserService{
      * @param id
      * @return
      */
-    public List<MiaoshaUser> getById(Long id);
+    public MiaoshaUser getById(Long id);
 
     /**
      * 登录
@@ -35,4 +35,13 @@ public interface MiaoshaUserService{
      * @return
      */
     public boolean register(RegisterVo registerVo);
+
+    /**
+     * 修改密码
+     * @param token
+     * @param id
+     * @param formPass
+     * @return
+     */
+    public boolean updatePassword(String token,long id,String formPass);
 }

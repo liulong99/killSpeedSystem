@@ -64,16 +64,16 @@ public class GoodsController {
     @RequestMapping(value = "/toList",produces = "text/html")
     @ResponseBody
     public String toList(HttpServletRequest request, HttpServletResponse response,Model model, MiaoshaUser miaoshaUser){
-        model.addAttribute("miaoshaUser",miaoshaUser);
-        //查询商品列表
-        List<GoodsVo> goodsList = goodsService.listGoodsVo();
-        model.addAttribute("goodsList",goodsList);
-
         //取缓存
         String html = redisService.get(GoodsKey.getGoodsList, "", String.class);
         if(!StringUtils.isEmpty(html)){
             return html;
         }
+
+        model.addAttribute("miaoshaUser",miaoshaUser);
+        //查询商品列表
+        List<GoodsVo> goodsList = goodsService.listGoodsVo();
+        model.addAttribute("goodsList",goodsList);
 
         //手动渲染
         WebContext ctx=new WebContext(request,response,request.getServletContext(),

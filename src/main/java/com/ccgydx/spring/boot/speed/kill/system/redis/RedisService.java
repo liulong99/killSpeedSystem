@@ -97,6 +97,21 @@ public class RedisService {
         }
     }
 
+    public <T> boolean delete(KeyPrefix prefix,String key){
+        Jedis jedis = null;
+        try{
+            jedis = jedisPool.getResource();
+            //生成真正的key
+            String realKey = prefix.getPrefix() + key;
+            Long decr = jedis.decr(realKey);
+            return decr>0;
+        }finally {
+            //释放连接，放到returnResource中
+            returnToPool(jedis);
+        }
+    }
+
+
     /**
      * 自增
      * @param prefix
