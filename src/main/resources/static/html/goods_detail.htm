@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <title>商品详情</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
+    <!--layer-->
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <!--jquery-->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- common.js -->
+    <script type="text/javascript" src="/js/common.js"></script>
+    <!-- goods_detail.js   -->
+    <script type="text/javascript" src="/js/goods_detail.js"></script>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading"><center><h2>秒杀商品详情</h2></center></div>
+    <table class="table">
+        <tr>
+            <td>商品名称：</td>
+            <td colspan="3" id="goodsName"></td>
+        </tr>
+        <tr>
+            <td>商品图片</td>
+            <td colspan="3"><img id="goodsImg" width="200" height="200" /></td>
+        </tr>
+        <tr>
+            <td>秒杀开始时间：</td>
+            <td id="startTime"></td>
+            <td>
+                <input type="hidden" id="remainSecond" />
+                <span id="miaoshaTip"></span>
+            </td>
+            <td>
+                <button class="btn btn-primary btn-block" type="button" id="buyButton" onclick="doMiaosha()">立即秒杀</button>
+                <input type="hidden" name="goodsId" id="goodsId" />
+            </td>
+        </tr>
+        <tr>
+            <td>商品原价：</td>
+            <td colspan="3" id="goodsPrice"></td>
+        </tr>
+        <tr>
+            <td>秒杀价：</td>
+            <td colspan="3" id="miaoshaPrice"></td>
+        </tr>
+        <tr>
+            <td>库存数量：</td>
+            <td colspan="3" id="stockCount"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

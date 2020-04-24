@@ -1,0 +1,61 @@
+<html>
+<head >
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <title>秒杀订单详情<</title>
+
+    <!--bootstrap-->
+    <!--/*@thymesVar id="HOST_CDN" type=""*/-->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
+    <!--layer-->
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <!--jquery-->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- common.js -->
+    <script type="text/javascript" src="/js/common.js"></script>
+    <!-- order_detail.js   -->
+    <script type="text/javascript" src="/js/order_detail.js"></script>
+
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading"><center><h2>秒杀订单详情</h2></center></div>
+    <table class="table">
+        <tr>
+            <td>商品名称：</td>
+            <td colspan="3" id="goodsName"></td>
+        </tr>
+        <tr>
+            <td>商品图片</td>
+            <td colspan="2"><img id="goodsImg" width="200" height="200" /></td>
+        </tr>
+        <tr>
+            <td>订单价格：</td>
+            <td colspan="2" id="goodsPrice">元</td>
+        </tr>
+        <tr>
+            <td>下单时间：</td>
+            <td colspan="2" id="createDate"></td>
+        </tr>
+        <tr>
+            <td>订单状态：</td>
+            <td id="orderStatus"></td>
+            <td><button class="btn btn-primary btn-block" type="submit" id="payButton">立即支付</button></td>
+        </tr>
+        <tr>
+            <td>收货人：</td>
+            <td colspan="2" id="nickname"></td>
+        </tr>
+        <tr>
+            <td>收货人电话：</td>
+            <td colspan="2" id="userId"></td>
+        </tr>
+        <tr>
+            <td>收货地址：</td>
+            <td colspan="2">安徽省阜阳市</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
