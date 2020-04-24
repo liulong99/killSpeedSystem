@@ -15,6 +15,8 @@ import java.io.Serializable;
  **/
 @Data
 public class RegisterVo implements Serializable {
+    private static final long serialVersionUID = -7250299926975997852L;
+
     @NotNull
     @IsMobile
     @ApiModelProperty(value = "用户账号")

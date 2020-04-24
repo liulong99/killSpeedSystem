@@ -16,6 +16,7 @@ import java.util.Date;
  **/
 @Data
 public class GoodsVo extends Goods implements Serializable {
+    private static final long serialVersionUID = -397317728843625464L;
     /**
      * 秒杀价
      */
@@ -39,7 +40,5 @@ public class GoodsVo extends Goods implements Serializable {
      */
     @Column(name = "end_date")
     private Date endDate;
-
-    private static final long serialVersionUID = 1L;
 
 }

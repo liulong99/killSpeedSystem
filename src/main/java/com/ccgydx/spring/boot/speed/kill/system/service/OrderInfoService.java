@@ -13,4 +13,6 @@ public interface OrderInfoService{
      * @return
      */
     OrderInfo createOrder(MiaoshaUser miaoshaUser, GoodsVo goodsVo);
+
+    OrderInfo getOrderById(long orderId);
 }

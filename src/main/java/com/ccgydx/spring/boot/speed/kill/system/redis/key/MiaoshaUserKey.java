@@ -1,4 +1,6 @@
-package com.ccgydx.spring.boot.speed.kill.system.redis;
+package com.ccgydx.spring.boot.speed.kill.system.redis.key;
+
+import com.ccgydx.spring.boot.speed.kill.system.redis.BasePrefix;
 
 /**
  * @Description : 用户模块key的前缀

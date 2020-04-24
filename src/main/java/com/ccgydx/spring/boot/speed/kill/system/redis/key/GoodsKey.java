@@ -1,4 +1,6 @@
-package com.ccgydx.spring.boot.speed.kill.system.redis;
+package com.ccgydx.spring.boot.speed.kill.system.redis.key;
+
+import com.ccgydx.spring.boot.speed.kill.system.redis.BasePrefix;
 
 /**
  * @Description :
@@ -6,7 +8,7 @@ package com.ccgydx.spring.boot.speed.kill.system.redis;
  * @Date 2020/4/22 22:43
  * @Version 1.0
  **/
-public class GoodsKey extends BasePrefix{
+public class GoodsKey extends BasePrefix {
 
     private GoodsKey(int expireSeconds,String prefix) {
         super(expireSeconds,prefix);

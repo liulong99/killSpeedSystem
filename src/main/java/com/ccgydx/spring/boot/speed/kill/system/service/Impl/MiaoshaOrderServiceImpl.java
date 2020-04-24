@@ -1,17 +1,22 @@
 package com.ccgydx.spring.boot.speed.kill.system.service.Impl;
 
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaOrder;
+import com.ccgydx.spring.boot.speed.kill.system.redis.RedisService;
+import com.ccgydx.spring.boot.speed.kill.system.redis.key.OrderKey;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.ccgydx.spring.boot.speed.kill.system.mapper.MiaoshaOrderMapper;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaOrderService;
-import tk.mybatis.mapper.entity.Example;
 
 @Service
 public class MiaoshaOrderServiceImpl implements MiaoshaOrderService{
 
     @Resource
     private MiaoshaOrderMapper miaoshaOrderMapper;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 判断用户是否秒杀过商品
@@ -21,13 +26,6 @@ public class MiaoshaOrderServiceImpl implements MiaoshaOrderService{
      */
     @Override
     public MiaoshaOrder getMiaoshaOrderbyUserIdAndGoodId(long userId, long goodsId) {
-        Example example=new Example(MiaoshaOrder.class);
-        Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("userId",userId).andEqualTo("goodsId",goodsId);
-        System.out.println("userId: "+userId+", goodsId: "+goodsId);
-        MiaoshaOrder miaoshaOrder = miaoshaOrderMapper.selectOneByExample(example);
-        System.out.println("------查看用户是否重复秒杀-----");
-        System.out.println("miaoshaOrder"+miaoshaOrder+"kkk");
-        return miaoshaOrder;
+        return redisService.get(OrderKey.getMiaoshaOrderByUidGid,""+userId+"_"+goodsId,MiaoshaOrder.class);
     }
 }

@@ -29,7 +29,6 @@ public class GoodsServiceImpl implements GoodsService{
      */
     @Override
     public GoodsVo getGoodsVoByGoodsId(long goodsId) {
-        System.out.println("------查看秒杀商品是否有库存-----");
         return goodsMapper.getGoodsVoByGoodsId(goodsId);
     }
 

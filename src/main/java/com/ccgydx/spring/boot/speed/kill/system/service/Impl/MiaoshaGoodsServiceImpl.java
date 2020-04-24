@@ -28,7 +28,7 @@ public class MiaoshaGoodsServiceImpl implements MiaoshaGoodsService{
         //1、减库存
         MiaoshaGoods miaoshaGoods=new MiaoshaGoods();
         Example example=new Example(MiaoshaGoods.class);
-        example.createCriteria().andEqualTo("goodsId",goodsVo.getId());
+        example.createCriteria().andEqualTo("goodsId",goodsVo.getId()).andGreaterThan("stockCount",0);
         miaoshaGoods.setStockCount(goodsVo.getStockCount()-1);
         miaoshaGoods.setStartDate(goodsVo.getStartDate());
         miaoshaGoods.setEndDate(goodsVo.getEndDate());

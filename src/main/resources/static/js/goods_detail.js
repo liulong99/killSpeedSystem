@@ -1,5 +1,4 @@
 $(function(){
-    // countDown();
     getDetail();
 });
 
@@ -29,6 +28,7 @@ function doMiaosha(){
             goodsId: $("#goodsId").val(),
         },
         success:function (data) {
+            console.log(data);
             if(data.code === 0){
                 window.location.href="/html/order_detail.htm?orderId="+data.data.id;
             }else{

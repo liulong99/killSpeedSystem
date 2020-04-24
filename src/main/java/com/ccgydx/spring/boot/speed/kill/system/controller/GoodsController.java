@@ -3,7 +3,7 @@ package com.ccgydx.spring.boot.speed.kill.system.controller;
 import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsDetailVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
-import com.ccgydx.spring.boot.speed.kill.system.redis.GoodsKey;
+import com.ccgydx.spring.boot.speed.kill.system.redis.key.GoodsKey;
 import com.ccgydx.spring.boot.speed.kill.system.redis.RedisService;
 import com.ccgydx.spring.boot.speed.kill.system.service.GoodsService;
 import com.ccgydx.spring.boot.speed.kill.system.service.MiaoshaUserService;

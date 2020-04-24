@@ -16,6 +16,8 @@ import java.io.Serializable;
  **/
 @Data
 public class LoginVo implements Serializable {
+    private static final long serialVersionUID = 8472458505796148748L;
+
     @NotNull
     @IsMobile
     @ApiModelProperty(value = "用户账号")

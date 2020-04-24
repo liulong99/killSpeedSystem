@@ -5,11 +5,15 @@ import com.ccgydx.spring.boot.speed.kill.system.domain.OrderInfo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.povo.GoodsVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaOrder;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
+import com.ccgydx.spring.boot.speed.kill.system.redis.RedisService;
+import com.ccgydx.spring.boot.speed.kill.system.redis.key.OrderKey;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.ccgydx.spring.boot.speed.kill.system.mapper.OrderInfoMapper;
 import com.ccgydx.spring.boot.speed.kill.system.service.OrderInfoService;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 
 @Service
@@ -17,6 +21,9 @@ public class OrderInfoServiceImpl implements OrderInfoService{
 
     @Resource
     private OrderInfoMapper orderInfoMapper;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 下订单，并生成订单
@@ -47,7 +54,19 @@ public class OrderInfoServiceImpl implements OrderInfoService{
         miaoshaOrder.setUserId(miaoshaUser.getId());
         miaoshaOrder.setGoodsId(goodsVo.getId());
         orderInfoMapper.insertMiaoshaOrder(miaoshaOrder);
-
+        redisService.set(OrderKey.getMiaoshaOrderByUidGid,""+miaoshaOrder.getId()+"_"+goodsVo.getId(),miaoshaOrder);
         return orderInfo;
+    }
+
+    /**
+     * 根据订单id获取订单信息
+    * @param orderId
+     * @return
+     */
+    @Override
+    public OrderInfo getOrderById(long orderId) {
+        Example example=new Example(OrderInfo.class);
+        example.createCriteria().andEqualTo("id",orderId);
+        return orderInfoMapper.selectOneByExample(example);
     }
 }

@@ -4,7 +4,7 @@ import com.ccgydx.spring.boot.speed.kill.system.domain.povo.LoginVo;
 import com.ccgydx.spring.boot.speed.kill.system.domain.MiaoshaUser;
 import com.ccgydx.spring.boot.speed.kill.system.domain.povo.RegisterVo;
 import com.ccgydx.spring.boot.speed.kill.system.exception.GlobalException;
-import com.ccgydx.spring.boot.speed.kill.system.redis.MiaoshaUserKey;
+import com.ccgydx.spring.boot.speed.kill.system.redis.key.MiaoshaUserKey;
 import com.ccgydx.spring.boot.speed.kill.system.redis.RedisService;
 import com.ccgydx.spring.boot.speed.kill.system.util.CodeMsg;
 import com.ccgydx.spring.boot.speed.kill.system.util.Md5Util;
