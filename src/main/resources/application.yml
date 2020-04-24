@@ -41,6 +41,19 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
+  resources:
+    add-mappings: true
+    cache:
+      period: 3600
+      cachecontrol:
+        max-age: 3600
+    chain:
+      cache: true
+      enabled: true
+      html-application-cache: true
+      compressed: true
+    static-locations: classpath:/static/
+
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
 

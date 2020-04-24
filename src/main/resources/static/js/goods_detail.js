@@ -21,6 +21,26 @@ function getDetail(){
     });
 }
 
+function doMiaosha(){
+    $.ajax({
+        url: "/miaosha/do_miaosha",
+        type: "POST",
+        data: {
+            goodsId: $("#goodsId").val(),
+        },
+        success:function (data) {
+            if(data.code === 0){
+                window.location.href="/html/order_detail.htm?orderId="+data.data.id;
+            }else{
+                layer.msg(data.msg)
+            }
+        },
+        error:function () {
+            layer.msg("客户端请求有误");
+        }
+    })
+}
+
 function render(detail){
     var miaoshaStatus=detail.miaoshaStatus;
     var remainSecond=detail.remainSecond;

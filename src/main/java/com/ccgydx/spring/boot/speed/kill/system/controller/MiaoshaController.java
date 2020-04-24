@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -74,5 +75,37 @@ public class MiaoshaController {
         model.addAttribute("orderInfo", orderInfo);
         model.addAttribute("goodsVo", goodsVo);
         return "order_detail";
+    }
+
+    /**
+     * 静态秒杀功能实现
+     * @param model
+     * @param miaoshaUser
+     * @param goodsId
+     * @return
+     */
+    @RequestMapping(value = "/do_miaosha",method = RequestMethod.POST)
+    @ResponseBody
+    public Result<OrderInfo> do_miaosha(Model model, MiaoshaUser miaoshaUser,@RequestParam("goodsId")long goodsId){
+        model.addAttribute("miaoshaUser",miaoshaUser);
+        if(miaoshaUser==null){
+            return Result.error(CodeMsg.SESSION_ERROR);
+        }
+        //判断商品是否有库存
+        GoodsVo goodsVo = goodsService.getGoodsVoByGoodsId(goodsId);
+        int stockCount = goodsVo.getStockCount();
+        if(stockCount<=0){
+            return Result.error(CodeMsg.MIAO_SHA_OVER);
+        }
+        //如果有库存判断是否已经秒杀到了，防止某些用户重复秒杀
+        MiaoshaOrder miaoshaOrder=miaoshaOrderService.getMiaoshaOrderbyUserIdAndGoodId(miaoshaUser.getId(),goodsId);
+        //如果用户已经秒杀到了
+        if(miaoshaOrder!=null){
+            return Result.error(CodeMsg.REPEATE_MIAOSHA);
+        }
+        //既没有秒杀到也有库存的情况才能进行秒杀
+        //1、减库存  2、下订单   3、写入秒杀订单
+        OrderInfo orderInfo=miaoshaGoodsService.miaosha(miaoshaUser,goodsVo);
+        return Result.success(orderInfo);
     }
 }
