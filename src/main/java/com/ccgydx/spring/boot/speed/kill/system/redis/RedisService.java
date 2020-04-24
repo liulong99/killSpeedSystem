@@ -159,7 +159,7 @@ public class RedisService {
      * @param <T>
      * @return
      */
-    private <T> T stringToBean(String str,Class<T> clazz){
+    public static <T> T stringToBean(String str,Class<T> clazz){
         if(str == null || str.length()<= 0 || clazz == null){
             return null;
         }else if(clazz == int.class || clazz == Integer.class){
@@ -179,7 +179,7 @@ public class RedisService {
      * @param <T>
      * @return
      */
-    private <T> String beenToString(T value){
+    public static <T> String beenToString(T value){
         if(value == null){
             return null;
         }

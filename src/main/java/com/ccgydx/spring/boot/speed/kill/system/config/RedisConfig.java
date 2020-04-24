@@ -1,4 +1,4 @@
-package com.ccgydx.spring.boot.speed.kill.system.redis;
+package com.ccgydx.spring.boot.speed.kill.system.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

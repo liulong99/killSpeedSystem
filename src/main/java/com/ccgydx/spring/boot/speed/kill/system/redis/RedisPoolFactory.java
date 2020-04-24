@@ -1,5 +1,6 @@
 package com.ccgydx.spring.boot.speed.kill.system.redis;
 
+import com.ccgydx.spring.boot.speed.kill.system.config.RedisConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
